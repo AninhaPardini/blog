@@ -1,5 +1,3 @@
-import Header from "@/components/header";
-
 export default function notFound () {
   return (
     <div className="flex flex-col justify-center items-center">

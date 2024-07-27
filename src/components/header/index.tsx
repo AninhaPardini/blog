@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Links = [
-  { href: '/', label: 'inicial' },
+  { href: '/inicial', label: 'inicial' },
   { href: '/sobre', label: 'sobre' },
   { href: '/contato', label: 'contato' },
 ];
@@ -18,7 +18,7 @@ export default function Header() {
     className="flex w-full py-4 justify-between items-center bg-white-100"
     >
       <Link 
-      href='/'
+      href='/inicial'
       >
         <Image 
         className='cursor-pointer w-16'
