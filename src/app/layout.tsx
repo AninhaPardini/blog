@@ -21,12 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={jakarta.className}>
-        <div 
-          className="flex flex-col justify-center items-center"
-        >
+      <body className={`flex flex-col justify-center items-center ${jakarta.className}`}>
           <div 
-          className="container"
+          className="container flex flex-col justify-center items-center"
           >
             <Header />
             <main>
@@ -34,7 +31,6 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
-        </div>
       </body>
     </html>
   );
