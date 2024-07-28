@@ -1,5 +1,6 @@
-'use client';
-import React from 'react';
+'use client'
+
+import { useState, useEffect, useCallback } from 'react';
 import { Bars3Icon } from '@heroicons/react/16/solid';
 
 import Logo from '../../assets/logo.svg';
@@ -13,25 +14,32 @@ const Links = [
 ];
 
 export default function Header() {
-  const [header, setHeader] = React.useState(false);
-  const scrollHeader = () => {
+  const [header, setHeader] = useState(false);
+
+  const scrollHeader = useCallback(() => {
     if (window.scrollY >= 80) {
       setHeader(true);
     } else {
       setHeader(false);
     }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener('scroll', scrollHeader);
-    return () => {
-      window.removeEventListener('scroll', scrollHeader);
-    }
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollHeader();
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollHeader]);
+
+  // ${header ? 'fixed top-0 z-20 max-w-[1536px] border-b-2 border-mandy-600' : 'div'}
+
   return (
-    <header 
-    className={`flex w-full py-6 justify-between items-center bg-white-100 transition-all duration-400 text-white-700  ${header ? 'fixed max-w-[1536px] border-b-2 border-mandy-600' : 'header'}`}
+    <div 
+    className={`flex w-full py-6 justify-between items-center bg-white-100 transition-all duration-400 text-white-700 ${header ? 'fixed top-0 z-20 max-w-[1536px] border-b-2 border-mandy-600' : 'div'}`}
     >
       <Link 
       href='/inicial'
@@ -60,6 +68,6 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-    </header>
+    </div>
   );
 }
