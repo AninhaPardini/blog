@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <div 
-    className={`flex fixed top-0 z-20 max-w-[1536px] w-full py-6 justify-between items-center sm:px-16 2xl:px-0 bg-white-100 transition-all duration-400 text-white-700 ${header ? 'border-b-2 border-mandy-600' : 'div'}`}
+    className={`flex fixed top-0 z-20 max-w-[1536px] w-full py-6 justify-between items-center sm:px-16 2xl:px-0 bg-white-100 transition-all duration-400 text-white-700 ${header ? 'border-b-2 border-mandy-600 bg-opacity-95' : 'div'}`}
     >
       <Link 
       href='/inicial'
