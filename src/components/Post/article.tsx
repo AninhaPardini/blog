@@ -8,13 +8,18 @@ interface ArticleProps {
   description: string;
   date: string;
   link: string;
+  banner: string;
+  textBadge: string;
+  colorBgBadge: string;
+  colorTextBadge: string;
+  iconFill: string;
 }
 
 export default function ArticlePreview(props: any) {
-  const styles = [
+  const badgeStyles = [
     props.colorBgBadge,
     props.colorTextBadge,
-    "text-xs",
+    "text-sm",
     "font-medium",
     "inline-flex",
     "items-center",
@@ -23,7 +28,8 @@ export default function ArticlePreview(props: any) {
     "rounded",
     "px-2",
     "gap-2",
-    "bg-opacity-80",
+    "bg-opacity-90",
+    "font-semibold"
   ].join(" ");
 
   return (
@@ -38,15 +44,16 @@ export default function ArticlePreview(props: any) {
 
           <div className="flex w-full justify-between items-center px-4 py-4 absolute top-0">
             <span 
-              className={styles}
+              className={badgeStyles}
             >
               <Image 
+                className="text-mandy-300"
                 width={16} height={16}
                 src={props.icon} alt="Icone de Câmera"/>
               {props.textBadge}
             </span>
             <span 
-              className="text-sm py-1 px-2 bg-mandy-50 rounded bg-opacity-80 text-white-800">
+              className="text-sm font-semibold py-1 px-2 bg-mandy-50 rounded bg-opacity-90 text-white-900">
               {props.date}
             </span>
           </div>
