@@ -10,7 +10,7 @@ import Image from 'next/image';
 const Links = [
   { href: '/', label: 'inicial' },
   { href: '/sobre', label: 'sobre' },
-  { href: '/portfolio', label: 'portfólio' },
+  { href: 'https://www.figma.com/proto/12zPF3okZGsCJA2OlZbVev/Portif%C3%B3lio-V2?page-id=29%3A133&node-id=29-141&viewport=808%2C525%2C0.08&t=wmIZDeLrHwIKe12o-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=29%3A253', label: 'portfólio' },
 ];
 
 export default function Header() {
@@ -66,7 +66,7 @@ export default function Header() {
         
           {Links.map(({ href, label }) => (
             <li key={`${href}${label}`}>
-              <Link href={href} className="hover:text-mandy-500 capitalize transition-all duration-300">
+              <Link href={href} target="_blank" className="hover:text-mandy-500 capitalize transition-all duration-300">
                   {label}
               </Link>
             </li>
