@@ -1,26 +1,27 @@
-import Link from "next/link";
-import Image from "next/image";
+import React from "react";
 import ArticlePreview from "@/components/Post/article";
-import Cam from "../../assets/icons/cam.svg";
+import World from "../../assets/icons/world.svg";
 import Article from "../../assets/icons/article.svg";
+import { NewspaperIcon } from "@heroicons/react/24/solid";
 
 export default function PostPreview() {
   return (
     <div className="flex flex-col justify-center items-start py-16 w-full gap-8">
       <div>
         <h1 
-          className="text-2xl font-bold text-white-950"
+          className="flex justify-center items-center gap-2 text-4xl font-bold text-white-950"
         >
+          <NewspaperIcon className="w-12 mr-2" />
           Últimos posts
         </h1>
       </div>
       <div className="w-full">
         <section className="bg-white">
-          <div className="mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-            <div className="grid gap-8 lg:grid-cols-2">
+          <div className="lg:py-16 lg:px-6">
+            <div className="grid gap-8 lg:grid-cols-3">
                 <ArticlePreview 
-                  banner="https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxzm2memnoyspiaim3t23.png"
-                  icon={Cam} date="Hoje" 
+                  banner="https://images.unsplash.com/photo-1648854006531-361649aa182c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  icon={Article} date="Hoje" 
                   link="/figma-fundamentos" 
                   title="Figma para começar bem" 
                   description="Esse post é para você que já se aventurou no figma mas não sabe aplicar as melhores práticas para otimizar sua vida ou de sua equipe."
@@ -34,10 +35,20 @@ export default function PostPreview() {
                   link="/componentes-js-html" 
                   title="Guia de Components - para quem tem pressa!" 
                   description="Entendendo a base de Shadown DOM e componentização com JS em páginas HTML."
-                  colorBgBadge="bg-saffron-300"
-                  colorTextBadge="text-saffron-800"
+                  colorBgBadge="bg-mandy-300"
+                  colorTextBadge="text-mandy-800"
                   textBadge="Artigo"
                 />
+                <ArticlePreview 
+                  banner="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds"
+                  iconFill="fill-mandy-800" icon={World} date="Há 20 dias" 
+                  link="/guia-figma-devs" 
+                  title="Guia de Figma para Devs" 
+                  description="Pra você que é dev e quer melhorar suas skills com figma e tirar aquele projetinho ou portfólio da cabeça sem precisar passar horas em um curso."
+                  colorBgBadge="bg-mandy-300"
+                  colorTextBadge="text-mandy-800"
+                  textBadge="Guia"
+              />
             </div>
           </div>
         </section>

@@ -40,7 +40,7 @@ export default function ArticlePreview(props: any) {
         <div 
           className="mb-4 relative"
         >
-          <Image src={props.banner} className="max-h-[230px] object-cover" width={672} height={230} alt="Banner"/>
+          <Image src={props.banner} className="max-h-[224px] rounded-sm object-cover" width={672} height={224} alt="Banner"/>
 
           <div className="flex w-full justify-between items-center px-4 py-4 absolute top-0">
             <span 
