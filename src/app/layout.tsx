@@ -23,10 +23,10 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={`flex flex-col justify-center items-center ${jakarta.className}`}>
           <div 
-          className="container flex flex-col justify-center items-center"
+          className="container flex flex-col justify-center items-center scroll-smooth"
           >
             <Header />
-            <main>
+            <main className="pt-24">
               {children}
             </main>
             <Footer />

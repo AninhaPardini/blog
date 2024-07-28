@@ -17,7 +17,7 @@ export default function PostPreview() {
       </div>
       <div className="w-full">
         <section className="bg-white">
-          <div className="lg:py-16 lg:px-6">
+          <div className="lg:py-16">
             <div className="grid gap-8 lg:grid-cols-3">
                 <ArticlePreview 
                   banner="https://images.unsplash.com/photo-1648854006531-361649aa182c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

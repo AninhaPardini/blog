@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Bars3Icon } from '@heroicons/react/16/solid';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,12 +17,17 @@ export default function Header() {
   const [header, setHeader] = useState(false);
 
   const scrollHeader = useCallback(() => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 10) {
       setHeader(true);
     } else {
       setHeader(false);
     }
   }, []);
+
+  // Pegar o scroll ao vivo
+  // window.addEventListener('scroll', (e) => {
+  //   console.log(window.scrollY);
+  // });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +44,7 @@ export default function Header() {
 
   return (
     <div 
-    className={`flex w-full py-6 justify-between items-center bg-white-100 transition-all duration-400 text-white-700 ${header ? 'fixed top-0 z-20 max-w-[1536px] border-b-2 border-mandy-600' : 'div'}`}
+    className={`flex fixed top-0 z-20 max-w-[1536px] w-full py-6 justify-between items-center sm:px-16 2xl:px-0 bg-white-100 transition-all duration-400 text-white-700 ${header ? 'border-b-2 border-mandy-600' : 'div'}`}
     >
       <Link 
       href='/inicial'
@@ -61,7 +66,7 @@ export default function Header() {
         
           {Links.map(({ href, label }) => (
             <li key={`${href}${label}`}>
-              <Link href={href} className="hover:text-mandy-500 capitalize">
+              <Link href={href} className="hover:text-mandy-500 capitalize transition-all duration-300">
                   {label}
               </Link>
             </li>
