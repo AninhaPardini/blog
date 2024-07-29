@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
@@ -19,14 +21,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+
   return (
     <html lang="pt-br">
-      <body className={`flex flex-col justify-center items-center ${jakarta.className}`}>
+      <body className={`flex flex-col justify-center items-center bg-white-50 ${jakarta.className}`}>
           <div 
           className="container flex flex-col justify-center items-center scroll-smooth"
           >
             <Header />
-            <main className="pt-24">
+            <main className="pt-32">
               {children}
             </main>
             <Footer />
