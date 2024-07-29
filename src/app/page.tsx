@@ -25,7 +25,7 @@ export default function Home() {
     <div className='relative'>
       <button 
         onClick={handleClick} 
-        className="fixed bottom-16 right-16 z-30 p-4 border border-white-800 text-white-800 rounded-lg hover:bg-mandy-500 hover:text-mandy-500 hover:border-mandy-500 hover:bg-opacity-10"
+        className="fixed bottom-16 transition-all duration-400 right-16 z-30 p-4 border border-white-800 text-white-800 rounded-lg hover:bg-mandy-500 hover:text-mandy-500 hover:border-mandy-500 hover:bg-opacity-10"
       >
         <ArrowDownIcon className="w-8 h-8" />
       </button>
