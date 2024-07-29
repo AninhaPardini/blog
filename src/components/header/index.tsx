@@ -8,43 +8,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Links = [
-  { href: '/', label: 'inicial' },
-  { href: '/sobre', label: 'sobre' },
-  { href: 'https://www.figma.com/proto/12zPF3okZGsCJA2OlZbVev/Portif%C3%B3lio-V2?page-id=29%3A133&node-id=29-141&viewport=808%2C525%2C0.08&t=wmIZDeLrHwIKe12o-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=29%3A253', label: 'portfólio' },
+  { href: '/', label: 'inicial', target: '_self' },
+  { href: '/sobre', label: 'sobre', target: '_self' },
+  { href: 'https://www.figma.com/proto/12zPF3okZGsCJA2OlZbVev/Portif%C3%B3lio-V2?page-id=29%3A133&node-id=29-141&viewport=808%2C525%2C0.08&t=wmIZDeLrHwIKe12o-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=29%3A253', label: 'portfólio', target: '_blank'},
 ];
 
 export default function Header() {
-  const [header, setHeader] = useState(false);
-
-  const scrollHeader = useCallback(() => {
-    if (window.scrollY >= 10) {
-      setHeader(true);
-    } else {
-      setHeader(false);
-    }
-  }, []);
-
-  // Pegar o scroll ao vivo
-  // window.addEventListener('scroll', (e) => {
-  //   console.log(window.scrollY);
-  // });
+  const [scrollTop, setScrollTop] = useState(0);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   useEffect(() => {
+    let lastScrollTop = 0;
+
     const handleScroll = () => {
-      scrollHeader();
+      const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (currentScrollTop > lastScrollTop) {
+        setIsScrollingDown(true);
+      } else {
+        setIsScrollingDown(false);
+      }
+
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+      setScrollTop(currentScrollTop);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollHeader]);
-
-  // ${header ? 'fixed top-0 z-20 max-w-[1536px] border-b-2 border-mandy-600' : 'div'}
+  }, []);
 
   return (
     <div 
-    className={`flex fixed top-0 z-20 max-w-[1536px] w-full py-6 justify-between items-center sm:px-16 2xl:px-0 bg-white-100 transition-all duration-400 text-white-700 ${header ? 'border-b-2 border-mandy-600 bg-opacity-95' : 'div'}`}
+      className={`flex max-w-[1536px] justify-between items-center w-full py-6 sm:px-16 2xl:px-0 text-white-700 transition-all duration-500 ${isScrollingDown ? '-top-96 border-none' : 'bg-white-50 fixed  top-0 z-20 bg-opacity-95 '}`}
     >
       <Link 
       href='/inicial'
@@ -64,9 +61,9 @@ export default function Header() {
         className="flex sm:flex-col md:flex-row space-x-12 font-medium"
         >
         
-          {Links.map(({ href, label }) => (
+          {Links.map(({ href, label, target }) => (
             <li key={`${href}${label}`}>
-              <Link href={href} target="_blank" className="hover:text-mandy-500 capitalize transition-all duration-300">
+              <Link href={href} target={target} className="hover:text-mandy-500 capitalize transition-all duration-300">
                   {label}
               </Link>
             </li>
