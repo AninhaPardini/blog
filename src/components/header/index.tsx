@@ -41,7 +41,7 @@ export default function Header() {
 
   return (
     <div 
-      className={`flex max-w-[1536px] justify-between items-center w-full py-6 sm:px-16 2xl:px-0 text-white-700 transition-all duration-500 ${isScrollingDown ? '-top-96 border-none' : 'bg-white-50 fixed  top-0 z-20 bg-opacity-95 '}`}
+      className={`flex max-w-[1536px] justify-between items-center w-full py-6 sm:px-16 2xl:px-0 text-white-700 transition-all duration-500 ${isScrollingDown ? 'border-none' : 'bg-white-50 fixed  top-0 z-20 bg-opacity-95 '}`}
     >
       <Link 
       href='/inicial'
