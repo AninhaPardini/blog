@@ -51,7 +51,7 @@ export default function Home() {
               className='flex justify-start items-center gap-4'
             >
               <div 
-                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-mandy-100 hover:shadow-sm text-mandy-700 border border-mandy-200'
+                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-mandy-100 hover:shadow-md hover:shadow-mandy-100 text-mandy-700 border border-mandy-200 transition-all duration-300'
               >
                 <EyeIcon className='w-6 h-6 mr-2' />
                 <p 
@@ -61,7 +61,7 @@ export default function Home() {
                   </p>
               </div>
               <div 
-                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-purple-100 hover:shadow-sm text-purple-700 border border-purple-200'
+                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-purple-100 hover:shadow-md hover:shadow-purple-100 text-purple-700 border border-purple-200'
               >
                 <CommandLineIcon className='w-6 h-6 mr-2' />
                 <p 
@@ -70,8 +70,8 @@ export default function Home() {
                   Dev Full Stack
                   </p>
               </div>
-              <div 
-                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-saffron-200 hover:shadow-sm text-saffron-700 border border-saffron-300'
+              <div
+                className='flex justify-center items-center py-4 px-6 rounded-3xl bg-gradient-to-l from-saffron-200 hover:shadow-md hover:shadow-saffron-100 text-saffron-700 border border-saffron-300 '
               >
                 <LightBulbIcon className='w-6 h-6 mr-2' />
                 <p 
