@@ -40,11 +40,11 @@ export default function Header() {
     };
   }, []);
 
-  const onToggleMenu = (e: MouseEventHandler<HTMLButtonElement>) => {
-    setIsMenuOpen(!isMenuOpen);
-    console.log(e);
-    // e.name = e.name === 'menu' ? 'close' : 'menu';
-  };
+  // const onToggleMenu = (e: MouseEventHandler<HTMLButtonElement>) => {
+  //   setIsMenuOpen(!isMenuOpen);
+  //   console.log(e);
+  //   e.name = e.name === 'menu' ? 'close' : 'menu';
+  // };
 
   return (
     // <nav 
@@ -114,7 +114,7 @@ export default function Header() {
           </ul>
       </div>
       <div className="flex items-center gap-6">
-        <button className='block md:hidden' onClick={onToggleMenu}>
+        <button className='block md:hidden'>
           <Bars3Icon className="w-12 h-12 cursor-pointer" />
         </button>
       </div>
