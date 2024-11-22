@@ -5,6 +5,8 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
+import CorrectNavigation from "@/utils/correctNavigation";
+
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
@@ -26,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`flex flex-col justify-center items-center bg-white-50 ${jakarta.className}`}>
+        <CorrectNavigation>
           <div 
           className="container flex flex-col justify-center items-center scroll-smooth"
           >
@@ -34,7 +37,10 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+           
           </div>
+        </CorrectNavigation>
+          
       </body>
     </html>
   );

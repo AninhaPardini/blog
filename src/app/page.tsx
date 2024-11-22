@@ -4,6 +4,8 @@ import Image from 'next/image';
 import ItsMe from '../assets/ItsMe.png';
 import PostPreview from './posts/page';
 
+import { useState, useEffect } from 'react';
+
 import { ArrowDownIcon } from "@heroicons/react/16/solid";
 import { useRef } from "react";
 
@@ -11,8 +13,6 @@ import { EyeIcon, LightBulbIcon, CommandLineIcon } from '@heroicons/react/16/sol
 
 export default function Home() {
   const targetRef = useRef<HTMLDivElement>(null);
-
-  // Quando clicar no botão eu quero que ele vá até o targetRef
 
   const handleClick = () => {
     if (targetRef.current) {
@@ -37,7 +37,7 @@ export default function Home() {
           <section 
             className="flex flex-col order-last md:order-first justify-center items-start gap-6"
           >
-            <h1 
+            <h1
               className="text-3xl text-center md:text-left md:text-6xl text-white-950 font-extrabold"
             >
               Oie! Seja bem-vindo ao meu blog.
