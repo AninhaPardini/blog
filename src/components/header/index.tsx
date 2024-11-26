@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, MouseEventHandler } from 'react';
+import { useState, useEffect } from 'react';
 import { Bars3Icon } from '@heroicons/react/16/solid';
 
 import Logo from '@/assets/logo.svg';
