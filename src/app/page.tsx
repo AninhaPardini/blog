@@ -32,7 +32,7 @@ export default function Home() {
       <header
         className="flex flex-col justify-center items-center pb-20">
         <div
-          className="grid grid-rows-[196px_1fr] md:grid-rows-none md:grid-cols-2 justify-center items-center"
+          className="grid grid-rows-[196px_1fr] md:grid-rows-none md:grid-cols-2 justify-center items-center gap-12"
         >
           <section 
             className="flex flex-col order-last md:order-first justify-center items-start gap-6"
@@ -40,12 +40,12 @@ export default function Home() {
             <h1
               className="text-3xl text-center md:text-left md:text-6xl text-white-950 font-extrabold"
             >
-              Oie! Seja bem-vindo ao meu blog.
+              Oie, sou Ana Pardini!
             </h1>
             <p 
-              className='text-md md:text-lg text-center md:text-left'
+              className='text-md md:text-lg text-center md:text-left max-w-[640px]'
             >
-              Aqui é onde eu trago meus pensamentos, projetos, estudos e tudo que gostaria de expressar públicamente ^^
+              Sou mãe, UX UI Designer, desenvolvedora Full Stack e possuo experiência com Gestão de Projetos na metodologia Agil Scrum.
             </p>
             <div 
               className='flex justify-start items-center gap-4'
