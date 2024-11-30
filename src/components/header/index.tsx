@@ -47,7 +47,7 @@ export default function Header() {
     >
       
       <Link 
-        href='/inicial'
+        href='/'
       >
         <Image 
           className='cursor-pointer w-16'

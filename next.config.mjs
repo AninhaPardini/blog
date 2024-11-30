@@ -13,6 +13,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'media.dev.to',
       },
+      {
+        protocol: 'https',
+        hostname: 'media2.dev.to',
+      }
     ],
   },
 };
