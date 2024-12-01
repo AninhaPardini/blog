@@ -85,9 +85,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Link>
     ),
     blockquote: ({ children }) => (
-      <blockquote>
+      <blockquote 
+        style=
+        {{
+          backgroundColor: '#EBEBEB',
+          padding: '1rem',
+          borderRadius: '16px',
+          marginTop: '0.4rem',
+          marginBottom: '1rem'
+        }}
+      >
         <p>{ children }</p>
       </blockquote>
+    ),
+    p: ({ children }) => (
+      <p 
+        style=
+        {{
+          marginBottom: '1rem'
+        }}
+      >
+        { children }
+      </p>
     ),
     img: (props) => (
       <Image
