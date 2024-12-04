@@ -121,6 +121,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...(props as ImageProps)}
       />
     ),
+    code: ({ children }) => (
+      <pre 
+        style=
+        {{
+          backgroundColor: '#FFFDFD',
+          padding: '0.875rem',
+          border: '1px solid #ddd',
+          pageBreakInside: 'avoid',
+          overflow: 'auto',
+          wordWrap: 'break-word',
+          margin: '0.875rem 0',
+          borderRadius: '16px'
+        }}
+      >
+        <code>
+          { children }
+        </code>
+      </pre>
+    ),
     ...components,
   }
 }

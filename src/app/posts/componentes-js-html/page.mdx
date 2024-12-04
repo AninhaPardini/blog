@@ -1,7 +1,212 @@
 import MdxLayout from '../../../components/mdx-layout'
  
 # Guia de componentes - para quem tem pressa!
- 
+
+Um Shadow Dom como é mais conhecido os componentes no JS Vanilla, são como cápsulas que contém seus elementos com escopo próprio, e que também é possível escolher se quer que ele seja editável ou não variando o seu mode entre “open” ou “closed”.
+
+## Uma base simples
+```javascript
+class Component extends HTMLElement {
+  constructor() {
+    super(); // Chamar o construtor da classe pai (HTMLElement)
+    this.shadowDom = this.attachShadow({ mode: "open" });
+
+    // Criar o elemento h1 dentro da sombra
+    const componentRoot = document.createElement("h1");
+    componentRoot.textContent = this.getAttribute("title"); // propiedade
+
+    // Estilizar o componente
+    const style = document.createElement("style");
+    style.textContent = `h1 { color: red; }`;
+
+    // Adicionar elementos à sombra
+    this.shadowDom.appendChild(componentRoot);
+    this.shadowDom.appendChild(style);
+  }
+}
+
+// Registrar o elemento personalizado
+customElements.define("my-component", Component);
+```
+
+Chamando dentro da página:
+
+```javascript
+<script src="./src/Components/CardNews.js" defer></script>
+```
+
+> ⚠️ O defer é importante para que o component seja carregado apenas depois que o dom da página se carregue.
+
+## ✨ Ainda melhor!
+
+Para melhorar e deixar o código do componente mais limpo, você pode seguir algumas práticas e simplificações!
+
+1. Use **aspas consistentes** para atributos de strings;
+2. Utilize a notação de **template literals** para melhorar a legibilidade de strings longas;
+3. Separe o estilo CSS em uma string de template literal;
+4. Use o *build()* e *styles()* para organizar os códigos de construção e estilização;
+
+```javascript
+class ComponentExpert extends HTMLElement {
+  constructor() {
+    super(); // Chamar o construtor da classe pai (HTMLElement)
+    this.shadowDom = this.attachShadow({ mode: "open" });
+    this.shadowDom.appendChild(this.build());
+    this.shadowDom.appendChild(this.styles());
+  }
+
+  build() {
+    const componentRoot = document.createElement("div");
+    componentRoot.classList.add("root");
+
+    const childDiv = document.createElement("div");
+    childDiv.classList.add("child");
+
+    const titleDiv = document.createElement("h1");
+    titleDiv.textContent = `Hello ${(this.getAttribute("name") || "World")}`;
+
+    const linkDiv = document.createElement("a");
+    linkDiv.textContent = "Link Util";
+    linkDiv.href = this.getAttribute("link") || "https://linkdefault.com.br";
+
+    childDiv.appendChild(linkDiv);
+    childDiv.appendChild(titleDiv);
+
+    componentRoot.appendChild(childDiv);
+
+    return componentRoot;
+  }
+
+  styles() {
+    const style = document.createElement("style");
+    style.textContent = `
+      .root {
+        width: 100%;
+        background-color: #dedede;
+      }
+
+      .child {
+        width: 50%;
+        background-color: pink;
+      }
+
+      .child h1 {
+        color: #dedede;
+      }
+    `;
+
+    return style;
+  }
+}
+
+customElements.define("component-card", ComponentExpert);
+```
+
+É uma boa conduta em uma props definir um valor padrão para ela, para caso os dados não sejam carregados ou o usuário não tenha enviado os parâmetros.
+
+## 🔍 Usando functions ao seu favor!
+As funções vieram para ser usadas de forma que **facilite** o trabalho e **legibilidade** do código, então é importante utiliza-lá para deixar seu código mais **funcional**!
+
+Neste código eu usei algumas formas de armazenar valores, concatenar e validar, além de usar a desestruturação a meu favor no objeto attributes.
+
+```javascript
+class ComponentExpert extends HTMLElement {
+    constructor() {
+        super(); // Chamar o construtor da classe pai (HTMLElement)
+        this.shadowDom = this.attachShadow({ mode: "open" });
+        this.shadowDom.appendChild(this.build());
+        this.shadowDom.appendChild(this.styles());
+    }
+
+    build() {
+        function createCustomElement(elementType, classNames = [], attributes = {}, content = '') {
+            const element = document.createElement(elementType);
+
+            // Adicione classes CSS
+            if (classNames.length > 0) {
+                element.classList.add(...classNames);
+            }
+
+            // Adicione atributos
+            for (const [key, value] of Object.entries(attributes)) {
+                element.setAttribute(key, value);
+            }
+
+            // Adicione conteúdo
+            if (content !== '') {
+                element.textContent = content;
+            } else {
+                element.textContent = 'Conteúdo do elemento ' + elementType;
+
+            }
+
+            return element;
+        }
+
+        // Exemplo de uso:
+        const componentRoot = createCustomElement('div', ['root', 'main'], {
+            id: 'main',
+            'data-custom': 'root',
+        });
+
+        const childElement = createCustomElement('div', ['child'], {
+            id: 'childDiv',
+            'data-custom': 'child',
+        });
+
+        componentRoot.appendChild(childElement);
+
+        const titleElement = createCustomElement('h1', ['title', 'child'], {
+            title: 'Título do elemento',
+            id: 'title',
+            'data-custom': 'title',
+        }, 'Título');
+
+        childElement.appendChild(titleElement);
+
+        return componentRoot;
+    }
+
+    styles() {
+        const style = document.createElement("style");
+        style.textContent = `
+            .root {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                color: #333333;
+
+                background-color: #dedede;
+            }
+
+            .child {
+                width: 50%;
+                display: flex;
+                justify-content: flex-start;
+                aling-itens: center;
+
+                background-color: #d78795;
+
+            }
+
+            .child .title {
+                color: #dedede;
+
+            }
+        `;
+
+        return style;
+    }
+}
+
+customElements.define("component-card", ComponentExpert);
+```
+Quanto mais você deixar dinâmico seu componente e seus elementos mais ele vai ser flexível a diversas situações, um componente pode ser aplicado a uma navbar, um widget de notícia, um header, há várias opções!
+
+## Quando fazer um componente?
+
+Para saber se deve ou não construir um componente em algo é preciso pensar na funcionalidade daquilo, vai se repetir várias vezes? Vai ter que aparecer com opções diferentes em outra página? É analisar o qual móvel é esse item e se ele irá ser reutilizável ou não.
+
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>
 }
