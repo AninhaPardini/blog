@@ -48,7 +48,7 @@ export default function Header() {
 
   return (
     <nav
-      className={`w-[90vw] flex fixed max-w-[600px] md:max-w-[1536px] justify-between items-center md:w-full px-4 py-6 md:px-16 2xl:px-0 text-white-700 transition-all duration-500 ${isScrollingDown ? 'border-none -top-96' : 'bg-white-50 top-0 z-20 bg-opacity-95 '}`}
+      className={`bg-white-50 md:bg-opacity-0 w-[90vw] flex fixed max-w-[600px] md:max-w-[1536px] justify-between items-center md:w-full px-4 py-6 md:px-16 2xl:px-0 text-white-700 transition-all duration-500 ${isScrollingDown ? 'border-none -top-96' : 'md:bg-white-50 top-0 z-20 bg-opacity-95 '}`}
     >
 
       <Link
@@ -61,7 +61,7 @@ export default function Header() {
         />
       </Link>
       <div
-        className={`md:flex transition-all duration-500 md:static top-24 md:top-0 absolute bg-white min-w-[400px] md:min-h-fit min-h-[60vh] left-0 md:w-auto w-full flex items-center px-5 ${isScrollingDown ? 'hidden' : ''} ${isMenuOpen ? 'flex shadow-lg bg-white-50 rounded-xl h-auto' : '-top-96 hidden'}`} id='menu'>
+        className={`-z-10 md:flex transition-all duration-500 md:static md:top-0 absolute bg-white min-w-[400px] left-0 md:w-auto w-full flex items-center px-5 ${isScrollingDown ? 'hidden' : ''} ${isMenuOpen ? 'flex shadow-lg bg-white-50 rounded-xl py-8 opacity-100 top-24' : 'opacity-0 -top-2'}`} id='menu'>
         <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
           {Links.map(({ href, label, target }) => (
             <li key={`${href}${label}`}>
